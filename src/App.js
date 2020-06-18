@@ -9,9 +9,9 @@ function App() {
 
   useEffect(() => {
     api.get('repositories').then(res => (
-      setRepositories(res.data)
+        setRepositories(res.data)
     ))
-  }, [repositories])
+  }, [])
 
   async function handleAddRepository() {
     const response = await api.post('repositories', {
@@ -25,7 +25,7 @@ function App() {
   async function handleRemoveRepository(id) {
     await api.delete(`repositories/${id}`)
 
-    setRepositories(repositories.filter(repositorie => repositorie.id === id));
+    setRepositories(repositories.filter(item => item.id !== id));
   }
 
   return (
